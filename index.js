@@ -10,6 +10,12 @@ app.use(express.urlencoded({ extended: true }));
 
 //RUTAS
 app.post("/create", createUser );
+app.get(); //obtener lista de los usuarios
+app.get(); // obtener detalle de un usuario
+app.put(); // modificar los algun dato: dirección, numero de telefono.
+app.delete(); // borrar fisicamente el usuario
+app.put(); // borrado lógico de un usuario (cambiar una propiedad en la base de datos)
+
 
 const port = 3001;
 
