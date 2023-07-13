@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
 const conn = require("./services/db");
-const userModel = require("./models/user")
+const userModel = require("./models/user");
+const createUser = require("./controllers/create");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
 //RUTAS
-app.post("/create", )
-app.get("/user", )
+app.post("/create", createUser );
 
 const port = 3001;
 
