@@ -10,6 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("api/v1", router);
+app.use("/api/v1", router);
 
 module.exports = app;

@@ -60,7 +60,6 @@ const Users = dataBase.define(
     createdAt: true,
     updateAt: true,
   },
-  Users.sync()
 );
 
 module.exports = Users;

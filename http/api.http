@@ -1,5 +1,9 @@
+POST http://localhost:8080/api/v1/createuser HTTP/1.1
+content-type: application/json
 
-POST url HTTP/1.1
-header name: header value
-
-content
+{
+    "nombre": "sample",
+    "apellido": "sample",
+    "correo": "sample2@sample.com",
+    "contrasena": "sample"
+}
