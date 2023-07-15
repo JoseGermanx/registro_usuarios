@@ -4,6 +4,6 @@ content-type: application/json
 {
     "nombre": "sample",
     "apellido": "sample",
-    "correo": "sample2@sample.com",
+    "correo": "sample23@sample.com",
     "contrasena": "sample"
 }

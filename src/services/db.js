@@ -4,7 +4,8 @@ const credentials = require("./const");
 
 const conn = new Sequelize(credentials.dbName, credentials.dbUser, credentials.dbPass, {
     host: "localhost",
-    dialect: 'mysql'
+    dialect: 'mysql',
+    logging: false
 } );
 
 module.exports = conn;
