@@ -1,29 +1,25 @@
 const express = require("express");
-const app = express();
 const conn = require("./services/db");
 const userModel = require("./models/user");
 const createUser = require("./controllers/create");
 
+const app = express();
+const cors = require("cors");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors());
 
 //RUTAS
 app.post("/create", createUser );
-app.get("/url"); //obtener lista de los usuarios
-app.get(); // obtener detalle de un usuario
-app.put(); // modificar los algun dato: dirección, numero de telefono.
-app.delete(); // borrar fisicamente el usuario
-app.put(); // borrado lógico de un usuario (cambiar una propiedad en la base de datos)
 
-
-const port = 3001;
+const port = 8080;
 
 const database = async () => {
   try {
     await conn.authenticate();
     console.log("Base de datos conectada");
-    await userModel.sync({force:true});
+    await userModel.sync();
   } catch (error) {
     console.log("Algo salió mal en la conexión de la BD", error);
   }
