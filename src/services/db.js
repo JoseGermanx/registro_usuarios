@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { Sequelize  } = require('sequelize');
-const credentials = require("./const");
+const credentials = require("../config/const");
 
 const conn = new Sequelize(credentials.dbName, credentials.dbUser, credentials.dbPass, {
     host: "localhost",
