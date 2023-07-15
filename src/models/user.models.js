@@ -3,7 +3,7 @@ const dataBase = require("../services/db")
 
 
 const Users = dataBase.define(
-  "Users",
+  "User",
   {
     idUser: {
       type: DataTypes.UUID,
@@ -59,7 +59,8 @@ const Users = dataBase.define(
     timestamps: true,
     createdAt: true,
     updateAt: true,
-  }
+  },
+  Users.sync()
 );
 
 module.exports = Users;

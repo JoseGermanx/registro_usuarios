@@ -1,4 +1,4 @@
-const users = require("../models/user");
+const users = require("../models/user.models");
 
 const createUser = async (req, res) => {
   const { nombre, apellido, correo, contrasena } = req.body;
@@ -19,8 +19,9 @@ const createUser = async (req, res) => {
       res.status(400).json({ msg: "El correo ya esta registrado" });
     }
   } catch (error) {
-    console.log("error", error);
+    res.status(400).json({ msg: "Algo salió mal", error });
+    console.log("error", {msg: error});
   }
 };
 
-module.exports = createUser;
+module.exports = {createUser};
