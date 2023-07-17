@@ -4,7 +4,7 @@ function enviarDatos() {
   let emailField = document.getElementById("inputEmail4");
   let errorEmail = document.getElementById("errorEmail");
   let error = document.getElementById("error");
-  let validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  let validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/; // expresiones regulares en javascript
 
   // Using test we can check if the text match the pattern
  
