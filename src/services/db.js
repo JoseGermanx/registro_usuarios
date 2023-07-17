@@ -6,6 +6,6 @@ const conn = new Sequelize(credentials.dbName, credentials.dbUser, credentials.d
     host: "localhost",
     dialect: 'mysql',
     logging: false
-} );
+});
 
 module.exports = conn;
