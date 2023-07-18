@@ -1,12 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-//main().catch(err => console.log(err));
+const dbConnection = async () => {
+  try {
+    await mongoose.connect("mongodb://127.0.0.1:27017/registrousuarios");
+    console.log("Base de datos online");
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error a la hora de iniciar la base de datos", error);
+  }
+};
 
-const dbConex = async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/registrousuarios');
-  console.log("Conectado a la base de datos");
-
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}
-
-module.exports = dbConex;
+module.exports = {
+  dbConnection,
+};
