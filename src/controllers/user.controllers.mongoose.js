@@ -1,23 +1,27 @@
-const users = require("../models/user.models"); // sequalize
+
+const userModel = require('../models/user.models.mongoose')
+
+
 const bcrypt = require('bcrypt');
-const createUser = async (req, res) => {
+const createUserMongoose = async (req, res) => {
   const { nombre, apellido, correo, contrasena } = req.body;
 
   if(!nombre || !apellido || !correo || !contrasena) return res.status(400).json({msg: "Todos los campos son obligatorios"});
   
   try {
-    const email = await users.findOne({ where: { email: correo } });
+    const email = await userModel.findOne({"email": contrasena }); // si el email no exite devuelve un null
+
         // Encriptar la contraseña
         const salt = bcrypt.genSaltSync();
         
-    if (!email) {
+    if (email === null ) {
       const usuario = {
         name: nombre,
         lastName: apellido,
         email: correo,
         password: bcrypt.hashSync( contrasena, salt )
       };
-      await users.create(usuario);
+      await userModel.create(usuario);
       res.status(200).json({ msg: "Usuario registrado" });
     } else {
       res.status(400).json({ msg: "El correo ya esta registrado" });
@@ -28,4 +32,4 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = {createUser};
+module.exports = {createUserMongoose};
