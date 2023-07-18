@@ -9,7 +9,7 @@ const createUserMongoose = async (req, res) => {
   if(!nombre || !apellido || !correo || !contrasena) return res.status(400).json({msg: "Todos los campos son obligatorios"});
   
   try {
-    const email = await userModel.findOne({"email": contrasena }); // si el email no exite devuelve un null
+    const email = await userModel.findOne({"email": correo }); // si el email no exite devuelve un null
 
         // Encriptar la contraseña
         const salt = bcrypt.genSaltSync();

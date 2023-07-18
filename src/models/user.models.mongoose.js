@@ -21,6 +21,12 @@ const userSchema = new Schema(
         password: {
             type: String,
             require: [true, "El password es requerido"]
+        },
+        status: {
+            type: String,
+            require: true,
+            default: 'ACTIVE',
+            emun: ["ACTIVE", "BLOCK", "DELETE", "PENDING"]
         }
     }
 )
