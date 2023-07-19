@@ -11,3 +11,9 @@ Apellido
 RUT
 Dirección
 Email
+
+
+## DELETE MONGO
+
+1. Crear ruta para gestionar el borrado de un documento.
+2. Controlador para la gestión de la petición. Model.deleteOne()

@@ -1,5 +1,4 @@
 // Get our input reference.
-
 function enviarDatos() {
   let emailField = document.getElementById("inputEmail4");
   let errorEmail = document.getElementById("errorEmail");
