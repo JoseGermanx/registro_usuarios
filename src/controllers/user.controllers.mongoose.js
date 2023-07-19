@@ -58,5 +58,41 @@ res.status(200).json({msg:"Usuario actualizado"});
 }
 }
 
+const login = async (req, res) => {
+  const { correo, contrasena } = req.body;
 
-module.exports = { createUserMongoose, getAllUsers, updateUser };
+  try {
+    // Verificar si el email existe
+    const usuario = await userModel.findOne({ email: correo });
+    if (!usuario) {
+      return res.status(400).json({
+        msg: "Email no está registrado",
+      });
+    }
+
+    // SI el usuario está activo
+    if (usuario.status !== "ACTIVE") {
+      return res.status(400).json({
+        msg: "Este usuario no se encuentra activo en nuestros sistemas",
+      });
+    }
+
+    // Verificar la contraseña
+    const validPassword = bcrypt.compareSync(contrasena, usuario.password);
+    if (!validPassword) {
+      return res.status(400).json({
+        msg: "Password no es correcto",
+      });
+    }
+    
+    res.json({
+      usuario,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      msg: "Hable con el administrador",
+    });
+  }
+};
+module.exports = { createUserMongoose, getAllUsers, updateUser, login };
